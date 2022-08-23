@@ -1,13 +1,24 @@
-<div *ngIf="submitted;else results" class="main-results">
+<div *ngIf="submitted;else initial" class="main-results">
   
   <form name="form-search" (submit)="onSubmit()">
     <input class="input-search" name="input-search" [(ngModel)]="value" type="search" placeholder="Search..."/>
     
   </form>
   <hr>
+  <div *ngIf="responseStatus; else errorDisplay" class="display-results">
+    <div *ngIf="isImages" class="special-reults">
+      <div *ngFor="let image of images" >
+        <app-image-view [source]="image.source">
+
+        </app-image-view>
+      </div>
+    </div>
+    <div class="normal-results"></div>
+  </div>
+  <ng-template #errorDisplay>Sorry some error</ng-template>
 </div>
 
-<ng-template #results>
+<ng-template #initial>
   <div class="main">
     <form name="form-search" (submit)="onSubmit()">
       <input class="input-search" name="input-search" [(ngModel)]="value" type="search" placeholder="Search..." autocomplete="additional-name" autofocus/>

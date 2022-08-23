@@ -26,6 +26,11 @@ form{
     width: 50%;
     height: 30px;
 }
+.special-reults{
+    display: flex;
+    flex-direction: row;
+    
+}
 
 .input-search{
     height: 30px;
